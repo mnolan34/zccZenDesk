@@ -19,3 +19,5 @@ INSTALL
 
 
 RUN
+1) In the terminal enter the command python3 driver.py
+2) type menu for the list of commands!
