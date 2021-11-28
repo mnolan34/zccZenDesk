@@ -21,15 +21,16 @@ class ticketManager:
             print('Status:', response.status_code, 'Problem with the request. Exiting.')
             exit()
     
-        #Decode JSON response into a dictionary, and use data
-        data = response.json()
-     
-        ticketList = data['tickets']
+        else:
+            #Decode JSON response into a dictionary, and use data
+            data = response.json()
+         
+            ticketList = data['tickets']
 
-        #for ticket in ticketList:
-            #print(ticket['subject'])
+            #for ticket in ticketList:
+                #print(ticket['subject'])
 
-        self.ticketList = ticketList
+            self.ticketList = ticketList
 
     #Function to list 25 tickets
     def listTickets(self):
@@ -45,10 +46,17 @@ class ticketManager:
 
     #Function to print an individual ticket
     def printTicket(self, ticketNum):
-        value = int(ticketNum)
-        print("Ticket " + ticketNum + " with subject: "
-                  + self.ticketList[value]['subject'] + " opened by: " + str(self.ticketList[value]['requester_id']))
-        
+        try:
+            value = int(ticketNum)
+            if(value < 0 or value > len(self.ticketList)):
+                print("Ticket does not exist: Please try again")
+            else:
+                print("Ticket " + ticketNum + " with subject: "
+                      + self.ticketList[value]['subject'] + " opened by: " + str(self.ticketList[value]['requester_id']))
+        except ValueError:
+            print("Please enter an integer value")
+            
+    #Function to print menu of command options
     def menuList(self):
         print("\t Select view options:")
         print("\t * Press l to view all tickets")
@@ -67,6 +75,7 @@ class ticketManager:
             print("PAGE NUM", self.pageNum)
             self.listTickets()
 
+    #Function to print previous page
     def prevPage(self):
         if(self.pageNum == 0):
             print("First page reached!")

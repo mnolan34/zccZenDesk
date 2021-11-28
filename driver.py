@@ -19,6 +19,7 @@ class driver:
                 command = input()
             #Quit Command
             elif(command == 'quit'):
+                print("Thans for using the viewer. Goodbye")
                 command = 'q'
             #nextPage Command
             elif(command == 'n'):
