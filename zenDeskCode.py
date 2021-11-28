@@ -5,7 +5,7 @@ class ticketManager:
     
     def __init__(self):
         self.pageNum = 0
-        self.ticketList = null
+        self.ticketList = None
 
 
     def connect(self):
@@ -34,26 +34,26 @@ class ticketManager:
     #Function to list 25 tickets
     def listTickets(self):
         startTicket = 25*self.pageNum
-        if(startTicket + 25 > len(ticketList)):
-            endTicket = len(ticketList)
+        if(startTicket + 25 > len(self.ticketList)):
+            endTicket = len(self.ticketList)
         else:
             endTicket = startTicket + 25
 
         for i in range(startTicket, endTicket):
-            print(self.ticketList[i]['subject'], self.ticketList[i]['description'])
+            print("Ticket with subject: " + self.ticketList[i]['subject'])
 
     #Function to print an individual ticket
     def printTicket(self, ticketNum):
         print(self.ticketList[ticketNum]['subject'],
                               self.ticketList[ticketNum]['description'])
 
-    def menuList():
-        print("\t \t \t Slect view options:")
-        print("\t \t \t * Press l to view all tickets")
-        print("\t \t \t * Press t to view a ticket")
-        print("\t \t \t * Press n to view next page of tickets")
-        print("\t \t \t * Press p to view previous page of tickets")
-        print("\t \t \t * Type quit to exit")
+    def menuList(self):
+        print("\t \t Select view options:")
+        print("\t \t * Press l to view all tickets")
+        print("\t \t * Press t to view a ticket")
+        print("\t \t * Press n to view next page of tickets")
+        print("\t \t * Press p to view previous page of tickets")
+        print("\t \t * Type quit to exit")
 
     #Function to print next page
     def nextPage(self):
@@ -61,13 +61,13 @@ class ticketManager:
             print("Last page reached!")
         else:
             self.pageNum += 1
-            listTickets(self)
+            self.listTickets()
 
     def prevPage(self):
         if(self.pageNum == 0):
             print("First page reached!")
         else:
             self.pageNum -+ 1
-            listTickets(self)
+            self.listTickets()
 
 
