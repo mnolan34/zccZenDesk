@@ -40,20 +40,22 @@ class ticketManager:
             endTicket = startTicket + 25
 
         for i in range(startTicket, endTicket):
-            print("Ticket with subject: " + self.ticketList[i]['subject'])
+            print("Ticket " + str(i) + " with subject: "
+                  + self.ticketList[i]['subject'] + "opened by: " + str(self.ticketList[i]['requester_id']))
 
     #Function to print an individual ticket
     def printTicket(self, ticketNum):
-        print(self.ticketList[ticketNum]['subject'],
-                              self.ticketList[ticketNum]['description'])
-
+        value = int(ticketNum)
+        print("Ticket " + ticketNum + " with subject: "
+                  + self.ticketList[value]['subject'] + "opened by: " + str(self.ticketList[value]['requester_id']))
+        
     def menuList(self):
-        print("\t \t Select view options:")
-        print("\t \t * Press l to view all tickets")
-        print("\t \t * Press t to view a ticket")
-        print("\t \t * Press n to view next page of tickets")
-        print("\t \t * Press p to view previous page of tickets")
-        print("\t \t * Type quit to exit")
+        print("\t Select view options:")
+        print("\t * Press l to view all tickets")
+        print("\t * Press t to view a ticket")
+        print("\t * Press n to view next page of tickets")
+        print("\t * Press p to view previous page of tickets")
+        print("\t * Type quit to exit")
 
     #Function to print next page
     def nextPage(self):
