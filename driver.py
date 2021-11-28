@@ -6,7 +6,7 @@ class driver:
         task = ticketManager()
         task.connect()
         print('Welcome to the ticket viewer')
-        print("Type'menu' to view options or 'quit' to exit")
+        print("Type 'menu' to view options or 'quit' to exit")
         command = input()
         while command != 'q':
             #ListCommand

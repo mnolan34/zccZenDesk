@@ -47,7 +47,7 @@ class ticketManager:
     def printTicket(self, ticketNum):
         value = int(ticketNum)
         print("Ticket " + ticketNum + " with subject: "
-                  + self.ticketList[value]['subject'] + "opened by: " + str(self.ticketList[value]['requester_id']))
+                  + self.ticketList[value]['subject'] + " opened by: " + str(self.ticketList[value]['requester_id']))
         
     def menuList(self):
         print("\t Select view options:")
@@ -59,17 +59,19 @@ class ticketManager:
 
     #Function to print next page
     def nextPage(self):
-        if(len(self.ticketList)//25 == self.pageNum):
+        if(self.pageNum == len(self.ticketList)//25 - 1):
             print("Last page reached!")
         else:
             self.pageNum += 1
+            print(len(self.ticketList))
+            print("PAGE NUM", self.pageNum)
             self.listTickets()
 
     def prevPage(self):
         if(self.pageNum == 0):
             print("First page reached!")
         else:
-            self.pageNum -+ 1
+            self.pageNum -= 1
             self.listTickets()
 
 
