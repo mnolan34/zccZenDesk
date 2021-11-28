@@ -35,26 +35,28 @@ class ticketManager:
     #Function to list 25 tickets
     def listTickets(self):
         startTicket = 25*self.pageNum
-        if(startTicket + 25 > len(self.ticketList)):
-            endTicket = len(self.ticketList)
-        else:
-            endTicket = startTicket + 25
+        if(self.listTickets != None):
+            if(startTicket + 25 > len(self.ticketList)):
+                endTicket = len(self.ticketList)
+            else:
+                endTicket = startTicket + 25
 
-        for i in range(startTicket, endTicket):
-            print("Ticket " + str(i) + " with subject: "
-                  + self.ticketList[i]['subject'] + "opened by: " + str(self.ticketList[i]['requester_id']))
+            for i in range(startTicket, endTicket):
+                print("Ticket " + str(i) + " with subject: "
+                      + self.ticketList[i]['subject'] + "opened by: " + str(self.ticketList[i]['requester_id']))
 
     #Function to print an individual ticket
     def printTicket(self, ticketNum):
-        try:
-            value = int(ticketNum)
-            if(value < 0 or value > len(self.ticketList)):
-                print("Ticket does not exist: Please try again")
-            else:
-                print("Ticket " + ticketNum + " with subject: "
-                      + self.ticketList[value]['subject'] + " opened by: " + str(self.ticketList[value]['requester_id']))
-        except ValueError:
-            print("Please enter an integer value")
+        if(self.ticketList != None):
+            try:
+                value = int(ticketNum)
+                if(value < 0 or value > len(self.ticketList)):
+                    print("Ticket does not exist: Please try again")
+                else:
+                    print("Ticket " + ticketNum + " with subject: "
+                          + self.ticketList[value]['subject'] + " opened by: " + str(self.ticketList[value]['requester_id']))
+            except ValueError:
+                print("Please enter an integer value")
             
     #Function to print menu of command options
     def menuList(self):
@@ -67,20 +69,22 @@ class ticketManager:
 
     #Function to print next page
     def nextPage(self):
-        if(self.pageNum == len(self.ticketList)//25 - 1):
-            print("Last page reached!")
-        else:
-            self.pageNum += 1
-            print(len(self.ticketList))
-            print("PAGE NUM", self.pageNum)
-            self.listTickets()
+        if(self.ticketList != None):
+            if(self.pageNum == len(self.ticketList)//25 - 1):
+                print("Last page reached!")
+            else:
+                self.pageNum += 1
+                print(len(self.ticketList))
+                print("PAGE NUM", self.pageNum)
+                self.listTickets()
 
     #Function to print previous page
     def prevPage(self):
-        if(self.pageNum == 0):
-            print("First page reached!")
-        else:
-            self.pageNum -= 1
-            self.listTickets()
+        if(self.ticketList != None):
+            if(self.pageNum == 0):
+                print("First page reached!")
+            else:
+                self.pageNum -= 1
+                self.listTickets()
 
 
